@@ -43,6 +43,17 @@ Run the application with command line arguments to specify a YouTube link:
 node index.js --url="https://www.youtube.com/watch?v=example"
 ```
 
+## 📦 Version History
+
+### Version 2
+- ✅ Thumbnail generation functionality
+- 🐛 Multiple bug fixes and stability improvements
+
+### Version 1
+- ✅ Loop generation from trending videos
+- ✅ Manual URL input functionality
+- ✅ Core processing pipeline established
+
 ## ⚙️ Process Flow
 
 The application automatically performs the following steps:
