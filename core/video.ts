@@ -62,7 +62,7 @@ export async function mergeAssetFileAndAudioFile(stored_directory: string) {
 
     console.log(`Merging asset file and audio file ::: ${stored_directory}/output.mp4`);
 
-    const res = await $`ffmpeg -i ${asset_video_path} -i ${stored_directory}/audio.mp3 -c:v copy -c:a aac ${stored_directory}/final_output.mp4`.quiet()
+    const res = await $`ffmpeg -i "${asset_video_path}" -i ${stored_directory}/audio.mp3 -c:v copy -c:a aac ${stored_directory}/final_output.mp4`.quiet()
 
     console.log(`Completed Merging asset file and audio file ::: ${stored_directory}/output.mp4`);
     
