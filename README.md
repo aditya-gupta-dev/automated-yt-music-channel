@@ -24,7 +24,7 @@ A fully autonomous YouTube channel creation tool for the music niche. This appli
 
 ## 🚀 Installation & Setup
 
-1. Download the latest release from the [releases section](https://github.com/username/Automated-yt-music-channel/releases)
+1. Download the latest release from the [releases section](https://github.com/aditya-gupta-dev/Automated-yt-music-channel/releases)
 2. Create a `.env` file in the root directory
 3. Configure the following environment variables in your `.env` file:
 
