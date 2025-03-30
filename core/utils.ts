@@ -3,7 +3,6 @@ export function checkForValidUrl(url:string) {
         new URL(url)
         return true
     } catch (e) {
-        console.log("Please provide a valid URL.")
         return false
     }
 }

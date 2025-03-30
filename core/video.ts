@@ -107,4 +107,6 @@ export async function loopingFinalVideo(stored_directory: string) {
     const res = await $`ffmpeg -f concat -safe 0 -i "${stored_directory}/files.txt" -c copy ./output/${videoId}.mp4`.quiet()
 
     console.log(`Completed Looping final video ::: output/${videoId}.mp4`)
+    console.log('\n');
+    
 }
