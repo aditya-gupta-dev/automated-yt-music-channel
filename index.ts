@@ -1,4 +1,3 @@
-import { $ } from "bun";
 import { checkForValidUrl } from "./core/utils";
 import { convertTheVideoToMP4, downloadSourceVideo, downloadThumbnail, extractHighQualityAudioFromVideo, generateConcatDemuxerFile, getYouTubeId, loopingFinalVideo, mergeAssetFileAndAudioFile } from "./core/video";
 import { mkdir, exists } from "fs/promises";
