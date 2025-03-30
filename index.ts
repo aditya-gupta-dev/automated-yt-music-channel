@@ -1,6 +1,6 @@
 import { fetchTrendingVideosByCountryCode } from "./api/youtube";
 import { checkForValidUrl } from "./core/utils";
-import { convertTheVideoToMP4, downloadSourceVideo, downloadThumbnail, extractHighQualityAudioFromVideo, generateConcatDemuxerFile, getYouTubeId, loopingFinalVideo, mergeAssetFileAndAudioFile } from "./core/video";
+import { convertTheVideoToMP4, createThumbnailForVideo, downloadSourceVideo, downloadThumbnail, extractHighQualityAudioFromVideo, generateConcatDemuxerFile, getYouTubeId, loopingFinalVideo, mergeAssetFileAndAudioFile } from "./core/video";
 import { mkdir, exists } from "fs/promises";
 
 if (Bun.argv.length < 3) {
@@ -54,16 +54,18 @@ else if (Bun.argv[2].toString().length === 2) {
         await downloadSourceVideo(url, YT_DLP_PATH)
     
         await convertTheVideoToMP4(`./files/${video_id}`)
-    
+        
         await extractHighQualityAudioFromVideo(`./files/${video_id}`)
-    
+        
         // fix await convertExtractedAudioToSlowedAndReverb(`./files/${video_id}`)
-    
+        
         await mergeAssetFileAndAudioFile(`./files/${video_id}`)
-    
+        
         await generateConcatDemuxerFile(`./files/${video_id}`)
-    
+        
         await loopingFinalVideo(`./files/${video_id}`)
+
+        await createThumbnailForVideo(`./files/${video_id}`)
     }
 
 }
@@ -112,5 +114,6 @@ else {
 
     await loopingFinalVideo(`./files/${video_id}`)
 
+    await createThumbnailForVideo(`./files/${video_id}`)
 }
 

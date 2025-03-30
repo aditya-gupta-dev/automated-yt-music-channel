@@ -101,12 +101,22 @@ export async function generateConcatDemuxerFile(stored_directory: string) {
 
 export async function loopingFinalVideo(stored_directory: string) {
     const videoId = stored_directory.split('/')[stored_directory.split('/').length - 1]
-
-    console.log(`Looping final video ::: ${stored_directory}/${videoId}.mp4`)
-
-    const res = await $`ffmpeg -f concat -safe 0 -i "${stored_directory}/files.txt" -c copy ./output/${videoId}.mp4`.quiet()
-
-    console.log(`Completed Looping final video ::: output/${videoId}.mp4`)
-    console.log('\n');
     
+    console.log(`Looping final video ::: ${stored_directory}/${videoId}.mp4`)
+    
+    const res = await $`ffmpeg -f concat -safe 0 -i "${stored_directory}/files.txt" -c copy ./output/${videoId}.mp4`.quiet()
+    
+    console.log(`Completed Looping final video ::: output/${videoId}.mp4`)
+    
+}
+
+export async function createThumbnailForVideo(stored_directory: string) {
+    const videoId = stored_directory.split('/')[stored_directory.split('/').length - 1]
+    
+    console.log(`Creating thumbnail for video ::: ${stored_directory}/${videoId}.mp4`)
+    
+    const res = await $`ffmpeg -i "${stored_directory}/thumbnail.webp" -i "assets/overlay.png" -filter_complex "[1:v]scale=iw*0.5:-1[overlay];[0:v][overlay]overlay=(W-w)/2:(H-h)/2" output/${videoId}.jpg`.quiet()
+    
+    console.log(`Completed Creating thumbnail for video ::: output/${videoId}.jpg`)
+    console.log('\n');
 }
