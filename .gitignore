@@ -3,6 +3,7 @@
 # Logs
 
 ./sample.mp4
+*.exe
 
 logs
 _.log
