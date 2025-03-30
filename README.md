@@ -39,8 +39,14 @@ YOUTUBE_API_KEY=(optional, required only for fetching trending videos)
 
 Run the application with command line arguments to specify a YouTube link:
 
+for specific video
 ```
-node index.js --url="https://www.youtube.com/watch?v=example"
+pikachu <your youtube url>
+```
+
+for trending videos
+```
+pikachu <region code>
 ```
 
 ## 📦 Version History
@@ -85,7 +91,7 @@ Automated-yt-music-channel/
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/username/Automated-yt-music-channel/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/aditya-gupta-dev/Automated-yt-music-channel/issues).
 
 ## 📜 License
 
