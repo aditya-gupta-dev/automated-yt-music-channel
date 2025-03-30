@@ -3,9 +3,13 @@
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/fluent-ffmpeg": "^2.1.27"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "fluent-ffmpeg": "^2.1.3"
   }
 }
