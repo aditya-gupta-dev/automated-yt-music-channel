@@ -1,2 +1,2 @@
-# automated-yt-music-channel
+# Automated-yt-music-channel
 A fully autonomous youtube channel in music niche  
