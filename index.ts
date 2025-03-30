@@ -17,8 +17,12 @@ if (!checkForValidUrl(url)) {
 const video_id = getYouTubeId(url)
 
 if (!video_id) {
-    console.log("Please provide a valid YouTube URL.")
-    process.exit(1)
+    if(Bun.argv[2].toString()==='v') {
+        console.log('version 1 build date 30-03-2025');
+        
+    }
+    // console.log("Please provide a valid YouTube URL.")
+    // process.exit(1)
 }
 
 if(!await exists('output')) {
