@@ -2,7 +2,11 @@
 
 # Logs
 
-./sample.mp4
+test.ts
+sample.mp4
+output
+files
+
 *.exe
 
 logs

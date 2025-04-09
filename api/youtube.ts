@@ -46,3 +46,37 @@ export async function fetchTrendingVideosByCountryCode(countryCode: string, maxR
 
     return res
 }
+
+export async function fetchVideoDetails(videoId: string): Promise<YoutubeVideo | null> {   
+
+    try {
+        const apiKey = checkForYoutubeApiKey()
+
+        if (!apiKey) {
+            console.log("Please provide a valid Youtube API Key")
+            process.exit(1)
+        }
+
+        const apiUrl = `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet,contentDetails,statistics&key=${apiKey}`
+
+        const response = await fetch(apiUrl)
+
+        if (!response.ok) {
+            console.log('API responded with code :', response.status)
+            return null
+        }
+
+        const data = await response.json()
+        
+        
+        return {
+            id: data.items[0].id,
+            title: data.items[0].snippet.title,
+            tags: data.items[0].snippet.tags || []
+        }
+    }
+    catch (error) {
+        console.error('Error fetching video details', videoId)
+    }
+    return null  
+}

@@ -10,7 +10,7 @@ if (Bun.argv.length < 3) {
 
 
 if (Bun.argv[2].toString() === 'v') {
-    console.log('version 1 build date 30-03-2025');
+    console.log('version 2 build date 31-03-2025');
 }
 
 else if (Bun.argv[2].toString().length === 2) {

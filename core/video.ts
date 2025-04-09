@@ -1,5 +1,7 @@
 import { $ } from "bun"
 import ffmpeg from "fluent-ffmpeg"
+import { fetchVideoDetails } from "../api/youtube";
+import { generateOutputFilename } from "./utils";
 
 export function getYouTubeId(url: string) {
     const regex = /(?:youtu\.be\/|youtube\.com\/(?:.*v=|.*\/|.*embed\/|v\/|shorts\/))([\w-]{11})/;
@@ -103,8 +105,17 @@ export async function loopingFinalVideo(stored_directory: string) {
     const videoId = stored_directory.split('/')[stored_directory.split('/').length - 1]
     
     console.log(`Looping final video ::: ${stored_directory}/${videoId}.mp4`)
+
+    const videoData = await fetchVideoDetails(videoId)
+
+    if (!videoData) {
+        console.log("Failed to fetch video data ", videoId)
+        process.exit(1)
+    }   
+
+    const sanitizedTitle = generateOutputFilename(videoData)
     
-    const res = await $`ffmpeg -f concat -safe 0 -i "${stored_directory}/files.txt" -c copy ./output/${videoId}.mp4`.quiet()
+    const res = await $`ffmpeg -f concat -safe 0 -i "${stored_directory}/files.txt" -c copy ./output/${sanitizedTitle}.mp4`.quiet()
     
     console.log(`Completed Looping final video ::: output/${videoId}.mp4`)
     
