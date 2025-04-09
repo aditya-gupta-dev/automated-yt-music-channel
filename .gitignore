@@ -4,8 +4,8 @@
 
 test.ts
 sample.mp4
-output
-files
+output/
+files/
 
 *.exe
 
