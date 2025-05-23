@@ -23,7 +23,7 @@ export async function downloadSourceVideo(url: string, YT_DLP_PATH: string) {
 
     console.log(`Downloading source video ::: ${url}`);
 
-    const res = await $`${YT_DLP_PATH} ${url} --output "./files/%(id)s/input"`.quiet()
+    const res = await $`${YT_DLP_PATH} ${url} --output "./files/%(id)s/output"`.quiet()
 
     console.log(`Completed Downloading source video ::: ${url}`);
 }
@@ -31,7 +31,7 @@ export async function downloadSourceVideo(url: string, YT_DLP_PATH: string) {
 export async function convertTheVideoToMP4(stored_directory: string) {
     const input_file = `${stored_directory}/input.webm`;
     if (!input_file.endsWith(".mp4")) {
-        console.log(`Converting video to mp4 format ::: ${stored_directory}/input.webm`);
+        console.log(`Converting video to mp4 format ::: ${stored_directory}/input.mp4`);
 
         const res = await $`ffmpeg -i ${stored_directory}/input.webm -c copy ${stored_directory}/output.mp4`.quiet()
 

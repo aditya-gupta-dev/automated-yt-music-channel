@@ -102,7 +102,7 @@ else {
 
     await downloadSourceVideo(url, YT_DLP_PATH)
 
-    await convertTheVideoToMP4(`./files/${video_id}`)
+    // await convertTheVideoToMP4(`./files/${video_id}`)
 
     await extractHighQualityAudioFromVideo(`./files/${video_id}`)
 
